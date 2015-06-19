@@ -20,7 +20,7 @@ Classe qui creer un iterateur pour gerer les des a jouer
 import java.util.ArrayList;
 
 public class IterateurDe implements java.util.Iterator<De>{
-	private ArrayList<De> ListeDeDees;
+	private De[] TableauDes;
 	private int position = 0;
 	
 	/**
@@ -28,30 +28,21 @@ public class IterateurDe implements java.util.Iterator<De>{
 	 * @param nombreDeDees Nombre de des necessaire pour le jeu
 	 * @param nombreDeFaceParDee Nombre de face necessaire par des.
 	 */
-	public IterateurDe(int nombreDeDees, int nombreDeFaceParDee){
-		this.ListeDeDees = new ArrayList<De>();
-		for (int i = 0; i < nombreDeDees; i++) {
-			this.ListeDeDees.add(i, (new De(nombreDeFaceParDee)));
+	public IterateurDe(ArrayList<De> listeDeDes){
+		this.TableauDes = new De[listeDeDes.size()];
+		for (int i = 0; i < listeDeDes.size(); i++) {
+			this.TableauDes[i] = listeDeDes.get(i);
 		}
 	}
 	/**
 	 * Brasse tous les des a jouer de la liste
 	 */
-	public void BrasserTousLesDees(){
-		int backupPosition = this.position;
-		this.position = 0;
-		this.ListeDeDees.get(this.position).brasser();
-		while (this.hasNext()){
-			this.next().brasser();
-		}
-		this.position = backupPosition;
-	}
 
 	@Override
 	public boolean hasNext() {
 		// TODO Auto-generated method stub
 		boolean hasNext = true;
-		if(this.position < 0 || this.position >= ListeDeDees.size() -1){
+		if(this.position < 0 || this.position >= this.TableauDes.length -1){
 			hasNext = false;
 		}
 		return hasNext;
@@ -66,10 +57,10 @@ public class IterateurDe implements java.util.Iterator<De>{
 		else{
 			this.position = 0;
 		}
-		return ListeDeDees.get(this.position);
+		return this.TableauDes[this.position];
 	}
 	public De GetDeActuelle(){
-		return this.ListeDeDees.get(this.position);
+		return this.TableauDes[this.position];
 	}
 }
 	
