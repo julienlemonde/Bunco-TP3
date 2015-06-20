@@ -1,3 +1,4 @@
+package Framework;
 
 public class Joueur implements Comparable<Joueur>{
 	private int numeroDuJoueur;

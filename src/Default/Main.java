@@ -1,4 +1,12 @@
+package Default;
 import java.util.Iterator;
+
+import Framework.CollectionDes;
+import Framework.CollectionJoueurs;
+import Framework.De;
+import Framework.IterateurDe;
+import Framework.IterateurJoueur;
+import Framework.Joueur;
 
 
 public class Main {
@@ -63,6 +71,14 @@ public class Main {
 		//Tester si le joueur gagnant est retournee
 		System.out.println("Gagnant:");
 		System.out.println(collectionjoueur.getJoueurAvecPlusGrandScore().getNumJoueur());
+		
+		System.out.println(" :");
+		System.out.println(" :");
+		System.out.println(" :");
+		System.out.println(" :");
+		
+		JeuBunco jeubuncotest = new JeuBunco(3);
+		jeubuncotest.jouerLeTour(1);
 		
 		
 	}
