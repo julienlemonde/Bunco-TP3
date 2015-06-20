@@ -14,17 +14,19 @@ public class StrategieBunco implements IStrategie{
 	public Joueur calculerLeVainqueur(Jeu jeu) {
 		// TODO Auto-generated method stub
 		IterateurJoueur joueurActuel = jeu.getTousLesJoueurs().creerIterateur();
+		Joueur gagnantTemporaire = joueurActuel.GetJoueurActuelle(); 
 		for (int i = 1; i <= jeu.getTousLesJoueurs().getNombreDeJoueurDansLaCollection(); i++) {
-			if(joueurActuel.GetJoueurActuelle().aPlusDePointQue(joueurActuel.next())){
-				
+			if(joueurActuel.next().aPlusDePointQue(gagnantTemporaire)){
+				gagnantTemporaire = joueurActuel.GetJoueurActuelle();
 			}
 		}
-		return null;
+		return gagnantTemporaire;
 	}
 
 	@Override
 	public void calculerScoreTour(Jeu jeu) {
 		// TODO Auto-generated method stub
+		System.out.println("Tour No #" + jeu.getTourActuel() + "---------------------------------");
 		IterateurJoueur joueurActuel = jeu.getTousLesJoueurs().creerIterateur();
 		int joueurIndex = 1;
 		while(joueurIndex <= jeu.getTousLesJoueurs().getNombreDeJoueurDansLaCollection()){
@@ -59,9 +61,10 @@ public class StrategieBunco implements IStrategie{
 				if(scoreBrasser == 21 || scoreBrasser == 0){
 					rejouerTour = false;
 				}
-				System.out.println(joueurActuel.GetJoueurActuelle().getNumJoueur() + "Score: " + scoreBrasser);
+				System.out.println("Joueur NO " + joueurActuel.GetJoueurActuelle().getNumJoueur() + " Score: " + scoreBrasser);
 				joueurActuel.GetJoueurActuelle().ajouterCesPointsAuPointage(scoreBrasser);
 			}
+			System.out.println("Score apres ce tour pour joueur " + joueurActuel.GetJoueurActuelle().getNumJoueur() + " : " + joueurActuel.GetJoueurActuelle().getNombreDePoints());
 			joueurActuel.next();
 			joueurIndex ++;
 			

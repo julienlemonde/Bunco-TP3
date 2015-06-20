@@ -78,7 +78,9 @@ public class Main {
 		System.out.println(" :");
 		
 		JeuBunco jeubuncotest = new JeuBunco(3);
-		jeubuncotest.jouerLeTour(1);
+		Joueur gagnant = jeubuncotest.DemarrerLeJeu();
+		System.out.println("BiG WINNER !: " + gagnant.getNumJoueur());
+		
 		
 		
 	}
