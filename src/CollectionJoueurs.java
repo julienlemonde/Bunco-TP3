@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 
 
 public class CollectionJoueurs implements ListeAIterer{
@@ -13,12 +12,19 @@ public class CollectionJoueurs implements ListeAIterer{
 	public void ajouterJoueur(Joueur joueur){
 		this.collectionDeJoueurs.add(joueur);
 	}
-	
+	public Joueur getJoueurAvecPlusGrandScore(){
+		Joueur joueurGagnant = this.collectionDeJoueurs.get(0);
+		for (Joueur joueur : this.collectionDeJoueurs) {
+			if(joueur.aPlusDePointQue(joueurGagnant)){
+				joueurGagnant = joueur;
+			}
+		}
+		return joueurGagnant;
+	}
 	
 	@Override
 	public IterateurJoueur creerIterateur() {
 		// TODO Auto-generated method stub
 		return new IterateurJoueur(collectionDeJoueurs);
 	}
-
 }

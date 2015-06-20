@@ -26,14 +26,21 @@ public class Main {
 		//print les resultats
 		System.out.println((iterateurDe.GetDeActuelle()).GetFaceDessus());
 		while(iterateurDe.hasNext()){
-			System.out.println(((iterateurDe.next())).GetFaceDessus());
+			De deTemp = iterateurDe.next();
+			System.out.println((deTemp).GetFaceDessus());
+			//Tester la methode faceDuDessusEgaleA(int i)
+			if(deTemp.faceDuDessusEgaleA(6)){
+				System.out.println("Nous avons Un 6 ici!!");
+			}
 		}
-		
 		
 		//Creation d'un joueur
 		Joueur joueur1 = new Joueur(1100);
 		Joueur joueur2 = new Joueur(1200);
 		Joueur joueur3 = new Joueur(1300);
+		joueur1.setPointageDuJoueur(11);
+		joueur2.setPointageDuJoueur(10);
+		joueur3.setPointageDuJoueur(10);
 		
 		//Creation de la collection de joueur et ajout des joueurs
 		CollectionJoueurs collectionjoueur = new CollectionJoueurs();
@@ -47,8 +54,15 @@ public class Main {
 		//print les num de joueurs
 		System.out.println(iterateurJoueur.GetJoueurActuelle().getNumJoueur());
 		while(iterateurJoueur.hasNext()){
-			System.out.println(iterateurJoueur.next().getNumJoueur());
+			Joueur joueurTemp = iterateurJoueur.next();
+			System.out.println(joueurTemp.getNumJoueur());
+			if(joueurTemp.nombreDePointEgaleA(10)){
+				System.out.println("Supposer avoir 2");
+			}
 		}
+		//Tester si le joueur gagnant est retournee
+		System.out.println("Gagnant:");
+		System.out.println(collectionjoueur.getJoueurAvecPlusGrandScore().getNumJoueur());
 		
 		
 	}
