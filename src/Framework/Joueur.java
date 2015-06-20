@@ -39,4 +39,7 @@ public class Joueur implements Comparable<Joueur>{
 	public void setPointageDuJoueur(int points){
 		this.nombreDePoints = points;
 	}
+	public void ajouterCesPointsAuPointage(int pointsAAjouter){
+		this.nombreDePoints += pointsAAjouter;
+	}
 }

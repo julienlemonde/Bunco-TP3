@@ -13,14 +13,23 @@ public class StrategieBunco implements IStrategie{
 	@Override
 	public Joueur calculerLeVainqueur(Jeu jeu) {
 		// TODO Auto-generated method stub
-		return null;
+		IterateurJoueur joueurActuel = jeu.getTousLesJoueurs().creerIterateur();
+		Joueur gagnantTemporaire = joueurActuel.GetJoueurActuelle(); 
+		for (int i = 1; i <= jeu.getTousLesJoueurs().getNombreDeJoueurDansLaCollection(); i++) {
+			if(joueurActuel.next().aPlusDePointQue(gagnantTemporaire)){
+				gagnantTemporaire = joueurActuel.GetJoueurActuelle();
+			}
+		}
+		return gagnantTemporaire;
 	}
 
 	@Override
 	public void calculerScoreTour(Jeu jeu) {
 		// TODO Auto-generated method stub
+		System.out.println("Tour No #" + jeu.getTourActuel() + "---------------------------------");
 		IterateurJoueur joueurActuel = jeu.getTousLesJoueurs().creerIterateur();
-		while(joueurActuel.hasNext()){
+		int joueurIndex = 1;
+		while(joueurIndex <= jeu.getTousLesJoueurs().getNombreDeJoueurDansLaCollection()){
 			boolean rejouerTour = true;
 			while(rejouerTour == true){
 				rejouerTour = true;
@@ -34,11 +43,9 @@ public class StrategieBunco implements IStrategie{
 				while(numeroDuDes <= 3){
 					System.out.println("De: " + deDuJeuBunco.GetDeActuelle().GetFaceDessus());
 					if(deDuJeuBunco.GetDeActuelle().faceDuDessusEgaleA(jeu.getTourActuel())){
-						rejouerTour = true;
 						buncoDes ++;
 						scoreBrasser = buncoDes;
 						if(buncoDes == 3){
-							rejouerTour = false;
 							scoreBrasser = 21;
 						}
 					}
@@ -48,15 +55,19 @@ public class StrategieBunco implements IStrategie{
 							scoreBrasser = 5;
 						}
 					}
-					else{
-						rejouerTour = false;
-					}
 					deDuJeuBunco.next();
 					numeroDuDes ++;
 				}
-				System.out.println(joueurActuel.GetJoueurActuelle().getNumJoueur() + "Score: " + scoreBrasser);
+				if(scoreBrasser == 21 || scoreBrasser == 0){
+					rejouerTour = false;
+				}
+				System.out.println("Joueur NO " + joueurActuel.GetJoueurActuelle().getNumJoueur() + " Score: " + scoreBrasser);
+				joueurActuel.GetJoueurActuelle().ajouterCesPointsAuPointage(scoreBrasser);
 			}
+			System.out.println("Score apres ce tour pour joueur " + joueurActuel.GetJoueurActuelle().getNumJoueur() + " : " + joueurActuel.GetJoueurActuelle().getNombreDePoints());
 			joueurActuel.next();
+			joueurIndex ++;
+			
 		}
 	}
 	

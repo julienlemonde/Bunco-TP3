@@ -1,12 +1,24 @@
 package Framework;
 
-public abstract class Jeu {
+import Default.StrategieBunco;
+
+public class Jeu {
 	private int nbTours;
+	private int nbJoueurs;
 	private int tourActuel;
 	private Joueur gagnant;
 	protected IStrategie strategieDuJeuEnCours;
 	protected CollectionDes tousLesDes = new CollectionDes();
 	protected CollectionJoueurs tousLesJoueurs = new CollectionJoueurs();
+	
+	public Jeu(int nbJoueurs){
+		this.nbJoueurs = nbJoueurs;
+		for (int i = 1; i <= nbJoueurs; i++) {
+			Joueur joueurAAjouter = new Joueur(i);
+			this.tousLesJoueurs.ajouterJoueur(joueurAAjouter);
+		}
+	}
+	
 	public void calculerScoreTour(){
 		strategieDuJeuEnCours.calculerScoreTour(this);
 	}
@@ -36,5 +48,16 @@ public abstract class Jeu {
 	}
 	public void setTourActuel(int tourActuel){
 		this.tourActuel = tourActuel;
+	}
+	public Joueur DemarrerLeJeu(){
+		for (int i = 1; i <= this.getNombreDeTours(); i++) {
+			jouerLeTour(i);
+		}
+		this.setGagnant(this.calculerLeVainqueur());
+		return this.getGagnant();
+	}
+	public void jouerLeTour(int numeroDuTour){
+		this.setTourActuel(numeroDuTour);
+		this.calculerScoreTour();
 	}
 }
