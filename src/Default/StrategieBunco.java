@@ -13,6 +13,12 @@ public class StrategieBunco implements IStrategie{
 	@Override
 	public Joueur calculerLeVainqueur(Jeu jeu) {
 		// TODO Auto-generated method stub
+		IterateurJoueur joueurActuel = jeu.getTousLesJoueurs().creerIterateur();
+		for (int i = 1; i <= jeu.getTousLesJoueurs().getNombreDeJoueurDansLaCollection(); i++) {
+			if(joueurActuel.GetJoueurActuelle().aPlusDePointQue(joueurActuel.next())){
+				
+			}
+		}
 		return null;
 	}
 
@@ -20,7 +26,8 @@ public class StrategieBunco implements IStrategie{
 	public void calculerScoreTour(Jeu jeu) {
 		// TODO Auto-generated method stub
 		IterateurJoueur joueurActuel = jeu.getTousLesJoueurs().creerIterateur();
-		while(joueurActuel.hasNext()){
+		int joueurIndex = 1;
+		while(joueurIndex <= jeu.getTousLesJoueurs().getNombreDeJoueurDansLaCollection()){
 			boolean rejouerTour = true;
 			while(rejouerTour == true){
 				rejouerTour = true;
@@ -34,11 +41,9 @@ public class StrategieBunco implements IStrategie{
 				while(numeroDuDes <= 3){
 					System.out.println("De: " + deDuJeuBunco.GetDeActuelle().GetFaceDessus());
 					if(deDuJeuBunco.GetDeActuelle().faceDuDessusEgaleA(jeu.getTourActuel())){
-						rejouerTour = true;
 						buncoDes ++;
 						scoreBrasser = buncoDes;
 						if(buncoDes == 3){
-							rejouerTour = false;
 							scoreBrasser = 21;
 						}
 					}
@@ -48,15 +53,18 @@ public class StrategieBunco implements IStrategie{
 							scoreBrasser = 5;
 						}
 					}
-					else{
-						rejouerTour = false;
-					}
 					deDuJeuBunco.next();
 					numeroDuDes ++;
 				}
+				if(scoreBrasser == 21 || scoreBrasser == 0){
+					rejouerTour = false;
+				}
 				System.out.println(joueurActuel.GetJoueurActuelle().getNumJoueur() + "Score: " + scoreBrasser);
+				joueurActuel.GetJoueurActuelle().ajouterCesPointsAuPointage(scoreBrasser);
 			}
 			joueurActuel.next();
+			joueurIndex ++;
+			
 		}
 	}
 	

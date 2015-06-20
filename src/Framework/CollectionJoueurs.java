@@ -28,4 +28,7 @@ public class CollectionJoueurs implements ListeAIterer{
 		// TODO Auto-generated method stub
 		return new IterateurJoueur(collectionDeJoueurs);
 	}
+	public int getNombreDeJoueurDansLaCollection(){
+		return collectionDeJoueurs.size();
+	}
 }
