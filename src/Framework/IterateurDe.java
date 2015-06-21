@@ -1,23 +1,26 @@
-package Framework;
-
 /******************************************************
 Cours:  LOG121
 Session: E2015
-Projet: Laboratoire #3
-Étudiant(e)s: Julien Lemonde, Alexandre Malo, Marc-Antoine Hebert, Jean-Michel Coupal
+Projet: TP3-Bunco
+Ã‰tudiant(e)s: Alexandre Malo, 
+			  Marc-Antoine Hebert, 
+			  Jean-Michel Coupal,
+			  Julien Lemonde
+
 Professeur : Francis Cardinal
 Nom du fichier: IterateurDe.java
-Date créé: 2015-06-18
+Date crÃ©Ã©: 2015-06-18
+*******************************************************
+@author Alexandre Malo, Marc-Antoine Hebert, Jean-Michel Coupal, Julien Lemonde
+@date 2015-06-18
 *******************************************************
 Description de la classe
 Classe qui creer un iterateur pour gerer les des a jouer
 (Peu importe le nombre de de)
 **Fait parti du framework de jeu
-*******************************************************
-*@author Julien Lemonde, Alexandre Malo, Marc-Antoine Hebert, Jean-Michel Coupal
-2015-06-01 Version initiale
-*******************************************************/ 
+*******************************************************/
 
+package Framework;
 import java.util.ArrayList;
 
 public class IterateurDe implements java.util.Iterator<De>{
@@ -62,6 +65,11 @@ public class IterateurDe implements java.util.Iterator<De>{
 	}
 	public De GetDeActuelle(){
 		return this.TableauDes[this.position];
+	}
+	@Override
+	public void remove() {
+		// TODO Auto-generated method stub
+		
 	}
 }
 	

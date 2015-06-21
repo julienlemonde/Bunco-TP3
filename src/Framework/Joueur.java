@@ -1,3 +1,20 @@
+/******************************************************
+Cours:  LOG121
+Session: E2015
+Projet: TP3-Bunco
+Étudiant(e)s: Alexandre Malo, 
+			  Marc-Antoine Hebert, 
+			  Jean-Michel Coupal,
+			  Julien Lemonde
+
+Professeur : Francis Cardinal
+Nom du fichier: Joueur.java
+Date créé: 2015-06-18
+*******************************************************
+@author Alexandre Malo, Marc-Antoine Hebert, Jean-Michel Coupal, Julien Lemonde
+@date 2015-06-18
+*******************************************************/
+
 package Framework;
 
 public class Joueur implements Comparable<Joueur>{
@@ -15,7 +32,6 @@ public class Joueur implements Comparable<Joueur>{
 	}
 	@Override
 	public int compareTo(Joueur joueurAComparer) {
-		// TODO Auto-generated method stub
 		int toReturn = this.getNombreDePoints() - joueurAComparer.getNombreDePoints();
 		if(joueurAComparer.getNombreDePoints() > this.getNombreDePoints()){
 			toReturn = joueurAComparer.getNombreDePoints() - this.getNombreDePoints();
