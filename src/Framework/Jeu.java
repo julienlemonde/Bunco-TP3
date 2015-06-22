@@ -1,10 +1,24 @@
-package Framework;
+/******************************************************
+Cours:  LOG121
+Session: E2015
+Projet: TP3-Bunco
+Étudiant(e)s: Alexandre Malo, 
+			  Marc-Antoine Hebert, 
+			  Jean-Michel Coupal,
+			  Julien Lemonde
 
-import Default.StrategieBunco;
+Professeur : Francis Cardinal
+Nom du fichier: Jeu.java
+Date créé: 2015-06-18
+*******************************************************
+@author Alexandre Malo, Marc-Antoine Hebert, Jean-Michel Coupal, Julien Lemonde
+@date 2015-06-18
+*******************************************************/
+
+package Framework;
 
 public class Jeu {
 	private int nbTours;
-	private int nbJoueurs;
 	private int tourActuel;
 	private Joueur gagnant;
 	protected IStrategie strategieDuJeuEnCours;
@@ -12,7 +26,6 @@ public class Jeu {
 	protected CollectionJoueurs tousLesJoueurs = new CollectionJoueurs();
 	
 	public Jeu(int nbJoueurs){
-		this.nbJoueurs = nbJoueurs;
 		for (int i = 1; i <= nbJoueurs; i++) {
 			Joueur joueurAAjouter = new Joueur(i);
 			this.tousLesJoueurs.ajouterJoueur(joueurAAjouter);

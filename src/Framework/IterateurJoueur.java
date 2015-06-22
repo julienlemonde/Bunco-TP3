@@ -1,3 +1,20 @@
+/******************************************************
+Cours:  LOG121
+Session: E2015
+Projet: TP3-Bunco
+Étudiant(e)s: Alexandre Malo, 
+			  Marc-Antoine Hebert, 
+			  Jean-Michel Coupal,
+			  Julien Lemonde
+
+Professeur : Francis Cardinal
+Nom du fichier: IterateurJoueur.java
+Date créé: 2015-06-18
+*******************************************************
+@author Alexandre Malo, Marc-Antoine Hebert, Jean-Michel Coupal, Julien Lemonde
+@date 2015-06-18
+*******************************************************/
+
 package Framework;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,7 +34,6 @@ public class IterateurJoueur implements Iterator<Joueur>{
 	
 	@Override
 	public boolean hasNext() {
-		// TODO Auto-generated method stub
 		boolean hasNext = true;
 		if(this.position < 0 || this.position >= this.TableauJoueurs.length -1){
 			hasNext = false;
@@ -27,7 +43,6 @@ public class IterateurJoueur implements Iterator<Joueur>{
 
 	@Override
 	public Joueur next() {
-		// TODO Auto-generated method stub
 		if(this.hasNext()){
 			this.position ++;
 		}
@@ -38,6 +53,12 @@ public class IterateurJoueur implements Iterator<Joueur>{
 	}
 	public Joueur GetJoueurActuelle(){
 		return this.TableauJoueurs[this.position];
+	}
+
+	@Override
+	public void remove() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
