@@ -22,13 +22,23 @@ public class CollectionJoueurs implements ListeAIterer{
 	
 	private ArrayList<Joueur> collectionDeJoueurs;
 	
+	/**
+	 * Constructeur pour creer une Liste de joueur 
+	 */
 	public CollectionJoueurs(){
 		this.collectionDeJoueurs = new ArrayList<Joueur>();
 	}
-	
+	/**
+	 * Methode pour ajouter un joueur a la collection
+	 * @param joueur
+	 */
 	public void ajouterJoueur(Joueur joueur){
 		this.collectionDeJoueurs.add(joueur);
 	}
+	/**
+	 * Methode pour retourner le joueur ayant le plus grand pointage dans la liste
+	 * @return Le joueur ayant le plus de point dans la collection
+	 */
 	public Joueur getJoueurAvecPlusGrandScore(){
 		Joueur joueurGagnant = this.collectionDeJoueurs.get(0);
 		for (Joueur joueur : this.collectionDeJoueurs) {
@@ -39,11 +49,16 @@ public class CollectionJoueurs implements ListeAIterer{
 		return joueurGagnant;
 	}
 	
-	@Override
+	/**
+	 * Methode pour creer un iterateurdeJoueur pour la collection de joueur
+	 */
 	public IterateurJoueur creerIterateur() {
-		// TODO Auto-generated method stub
 		return new IterateurJoueur(collectionDeJoueurs);
 	}
+	/**
+	 * Accesseur pour avoir le nombre de joueur de la collection
+	 * @return Le nombre de joueur dans la collection
+	 */
 	public int getNombreDeJoueurDansLaCollection(){
 		return collectionDeJoueurs.size();
 	}
