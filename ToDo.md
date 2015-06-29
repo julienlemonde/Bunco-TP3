@@ -9,7 +9,7 @@
 - [X] Commentaires
 - [ ] Dernière validation avant la remise
 
-- 
+
 
 
 ## Rapport
@@ -24,7 +24,7 @@
 - [ ] Conclusion
 - [ ] Dernière validation avant la remise
 
-- 
+
 
 
 
