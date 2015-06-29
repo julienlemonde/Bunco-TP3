@@ -25,19 +25,32 @@ import java.util.Random;
 public class De implements Comparable<De>{
 	private int nbFaces;
 	private int faceDuDessus = 1;
+	/**
+	 * Contrusteur d'un de
+	 * @param nombreDeFaces Nombre de face que le de doit avoit
+	 */
 	public De(int nombreDeFaces)
 	{
 		this.nbFaces = nombreDeFaces;
 	}
+	/**
+	 * Methode pour brasser les des. Genere un nombre au hasard entre 1 et le nombre de face
+	 */
 	public void brasser(){
 		Random hasard = new Random();
 		this.faceDuDessus = hasard.nextInt(this.nbFaces) + 1;
 	}
+	/**
+	 * Accesseur de la face qui se retrouve au dessus du de
+	 * @return Le nombre de la face sur le dessus
+	 */
 	public int GetFaceDessus(){
 		return this.faceDuDessus;
 	}
 	
-	@Override
+	/**
+	 * Methode pour comparer le resultat de deux des
+	 */
 	public int compareTo(De DeAComparer) {
 		int toReturn = this.GetFaceDessus() - DeAComparer.GetFaceDessus();
 		if(DeAComparer.GetFaceDessus() > this.GetFaceDessus()){
@@ -45,7 +58,11 @@ public class De implements Comparable<De>{
 		}
 		return toReturn;
 	}
-	
+	/**
+	 * Methode pour comparer le de est egal a un certain nombre
+	 * @param nombreAVerifier Le nombre a tester
+	 * @return Retourne true si le de est egal au nombre en parametre
+	 */
 	public boolean faceDuDessusEgaleA(int nombreAVerifier){
 		boolean estLeMemeNombre = false;
 		if(this.GetFaceDessus() == nombreAVerifier){

@@ -91,6 +91,7 @@ public class Main {
 		System.out.println(" :");
 		System.out.println(" :");
 		
+		//Jeu du bunco. On cree le jeu et on joue
 		JeuBunco jeubuncotest = new JeuBunco(3);
 		Joueur gagnant = jeubuncotest.DemarrerLeJeu();
 		System.out.println("BiG WINNER !: " + gagnant.getNumJoueur());

@@ -24,7 +24,10 @@ public class IterateurJoueur implements Iterator<Joueur>{
 	
 	private Joueur[] TableauJoueurs;
 	private int position = 0;
-	
+	/**
+	 * Constructeur de l'iterateur de joueurs
+	 * @param listeDeJoueurs Une liste de joueur
+	 */
 	public IterateurJoueur(ArrayList<Joueur> listeDeJoueurs) {
 		this.TableauJoueurs = new Joueur[listeDeJoueurs.size()];
 		for (int i = 0; i < listeDeJoueurs.size(); i++) {
@@ -32,7 +35,10 @@ public class IterateurJoueur implements Iterator<Joueur>{
 		}
 	}
 	
-	@Override
+	/**
+	 * Verifie s'il y a un autre joueur apres celui courant
+	 *@return Retourne True s'il ne s'agit pas du dernier
+	 */
 	public boolean hasNext() {
 		boolean hasNext = true;
 		if(this.position < 0 || this.position >= this.TableauJoueurs.length -1){
@@ -41,7 +47,9 @@ public class IterateurJoueur implements Iterator<Joueur>{
 		return hasNext;
 	}
 
-	@Override
+	/**
+	 * Methode pour selectionner le prochain joueur dans l'iteration
+	 */
 	public Joueur next() {
 		if(this.hasNext()){
 			this.position ++;
@@ -51,11 +59,17 @@ public class IterateurJoueur implements Iterator<Joueur>{
 		}
 		return this.TableauJoueurs[this.position];
 	}
+	/**
+	 * Methode qui retourne le joueur courant
+	 * @return Le joueur courant dans l'iteration
+	 */
 	public Joueur GetJoueurActuelle(){
 		return this.TableauJoueurs[this.position];
 	}
 
-	@Override
+	/**
+	 * Methode pour supprimer un joueur de l'iteration
+	 */
 	public void remove() {
 		// TODO Auto-generated method stub
 		

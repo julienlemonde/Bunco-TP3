@@ -26,21 +26,22 @@ public class StrategieBunco implements IStrategie{
 	
 	
 	@Override
+	/**
+	 * Classe pour calcule le Vainqueur du jeu bunco
+	 * @return Retour un joueur gagnant
+	 */
 	public Joueur calculerLeVainqueur(Jeu jeu) {
-		// TODO Auto-generated method stub
-		IterateurJoueur joueurActuel = jeu.getTousLesJoueurs().creerIterateur();
-		Joueur gagnantTemporaire = joueurActuel.GetJoueurActuelle(); 
-		for (int i = 1; i <= jeu.getTousLesJoueurs().getNombreDeJoueurDansLaCollection(); i++) {
-			if(joueurActuel.next().aPlusDePointQue(gagnantTemporaire)){
-				gagnantTemporaire = joueurActuel.GetJoueurActuelle();
-			}
-		}
-		return gagnantTemporaire;
+		
+		Joueur gagnant = jeu.getTousLesJoueurs().getJoueurAvecPlusGrandScore();
+		return gagnant;
 	}
 
-	@Override
+	/**
+	 * Methode pour calculer le pointage de chaque joueur par tour
+	 *@param Un type de jeu dans ce cas, il s'agit de la strategie bunco donc le jeu entree est de type bunco
+	 *
+	 */
 	public void calculerScoreTour(Jeu jeu) {
-		// TODO Auto-generated method stub
 		System.out.println("Tour No #" + jeu.getTourActuel() + "---------------------------------");
 		IterateurJoueur joueurActuel = jeu.getTousLesJoueurs().creerIterateur();
 		int joueurIndex = 1;
@@ -57,13 +58,16 @@ public class StrategieBunco implements IStrategie{
 				int numeroDuDes = 1;
 				while(numeroDuDes <= 3){
 					System.out.println("De: " + deDuJeuBunco.GetDeActuelle().GetFaceDessus());
+					//Si le de actuel est egale au numero de tour
 					if(deDuJeuBunco.GetDeActuelle().faceDuDessusEgaleA(jeu.getTourActuel())){
 						buncoDes ++;
 						scoreBrasser = buncoDes;
+						//Si les 3 des sont egales au tour = BUNCO
 						if(buncoDes == 3){
 							scoreBrasser = 21;
 						}
 					}
+					//Si les 3 des sont egaux mais sans etre le numero du tour
 					else if (aRefaire == deDuJeuBunco.GetDeActuelle().GetFaceDessus()){
 						troisPareille ++;
 						if(troisPareille == 3){
@@ -73,6 +77,7 @@ public class StrategieBunco implements IStrategie{
 					deDuJeuBunco.next();
 					numeroDuDes ++;
 				}
+				//Si le joueur a fait un bunco ou aucun point, on ne rejoue pas sont tour
 				if(scoreBrasser == 21 || scoreBrasser == 0){
 					rejouerTour = false;
 				}

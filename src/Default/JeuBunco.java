@@ -19,6 +19,11 @@ package Default;
 import Framework.Jeu;
 
 public class JeuBunco extends Jeu{
+	/**
+	 * Constructeur du jeu Bunco. Le constructeur utilise le constructeur super qui est
+	 * de la classe jeu 
+	 * @param nbDeJoueurs On indique le nombre de joueur
+	 */
 	public JeuBunco(int nbDeJoueurs){
 		super(nbDeJoueurs);
 		super.strategieDuJeuEnCours = new StrategieBunco();

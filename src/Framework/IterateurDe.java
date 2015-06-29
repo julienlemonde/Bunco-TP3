@@ -28,9 +28,8 @@ public class IterateurDe implements java.util.Iterator<De>{
 	private int position = 0;
 	
 	/**
-	 * Constructeur
-	 * @param nombreDeDees Nombre de des necessaire pour le jeu
-	 * @param nombreDeFaceParDee Nombre de face necessaire par des.
+	 * Contructeur de l'iterateur de des
+	 * @param listeDeDes On entre une liste de Des
 	 */
 	public IterateurDe(ArrayList<De> listeDeDes){
 		this.TableauDes = new De[listeDeDes.size()];
@@ -39,10 +38,9 @@ public class IterateurDe implements java.util.Iterator<De>{
 		}
 	}
 	/**
-	 * Brasse tous les des a jouer de la liste
+	 * Verifie s'il y a un autre de apres celui courant
+	 *@return Retourne True s'il ne s'agit pas du dernier
 	 */
-
-	@Override
 	public boolean hasNext() {
 		// TODO Auto-generated method stub
 		boolean hasNext = true;
@@ -52,7 +50,9 @@ public class IterateurDe implements java.util.Iterator<De>{
 		return hasNext;
 	}
 
-	@Override
+	/**
+	 * Methode pour selectionner le prochain de dans l'iteration
+	 */
 	public De next() {
 		// TODO Auto-generated method stub
 		if(this.hasNext()){
@@ -63,10 +63,16 @@ public class IterateurDe implements java.util.Iterator<De>{
 		}
 		return this.TableauDes[this.position];
 	}
+	/**
+	 * Methode pour savoir quel de est le courant
+	 * @return Le de a la position courante
+	 */
 	public De GetDeActuelle(){
 		return this.TableauDes[this.position];
 	}
-	@Override
+	/**
+	 * Methode pour supprimer un de
+	 */
 	public void remove() {
 		// TODO Auto-generated method stub
 		
