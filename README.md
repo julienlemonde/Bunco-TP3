@@ -2,6 +2,9 @@
 
 -Voici la Repo du TP3 du cours LOG-121 (Coupal, Julien, Marc, Malo)
 
+## To Do
+
+https://github.com/alexandremalo/Bunco-TP3/blob/master/ToDo.md
 
 ## Download the project
 
