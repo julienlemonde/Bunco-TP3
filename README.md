@@ -4,7 +4,7 @@
 
 ## To Do
 
-https://github.com/alexandremalo/Bunco-TP3/blob/master/ToDo.md
+https://github.com/alexandremalo/Bunco-TP3/ToDo.md
 
 ## Download the project
 
