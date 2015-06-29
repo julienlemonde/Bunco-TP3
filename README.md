@@ -2,9 +2,10 @@
 
 -Voici la Repo du TP3 du cours LOG-121 (Coupal, Julien, Marc, Malo)
 
+
 ## Download the project
 
-TODO: git clone https://github.com/alexandremalo/LOG121-TP2
+Type: git clone https://github.com/alexandremalo/Bunco-TP3
 
 
 ## Contributing
