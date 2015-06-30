@@ -7,24 +7,27 @@
 - [X] Patron GoF "Iterateur"
 - [ ] Patron de tests unitaires
 - [X] Commentaires
+- [ ] DerniÃ¨re validation avant la remise
 
-- [ ] Dernière validation avant la remise
+
 
 
 ## Rapport
 
 - [ ] Introduction
-- [ ] Responsabilités des classes
+- [ ] ResponsabilitÃ©s des classes
 - [ ] Diagramme de classes
 - [ ] Description de conception
 - [ ] Faiblesses de conception
 - [ ] Diagramme de sequence
-- [ ] Decision d'implémentation
+- [ ] Decision d'implÃ©mentation
 - [ ] Conclusion
-
-- [ ] Dernière validation avant la remise
-
+- [ ] DerniÃ¨re validation avant la remise
 
 
 
-### Le owner de la repo est le seul qui modifie ce fichier. SVP ne pas faire de pull-request contenant des modifications sur ce fichier
+
+
+##  ***
+
+- Le owner de la repo est le seul qui modifie ce fichier. SVP ne pas faire de pull-request contenant des modifications sur ce fichier
