@@ -31,7 +31,12 @@ public class De implements Comparable<De>{
 	 */
 	public De(int nombreDeFaces)
 	{
-		this.nbFaces = nombreDeFaces;
+		if(nombreDeFaces < 1){
+			this.nbFaces = 1;
+		}
+		else{
+			this.nbFaces = nombreDeFaces;
+		}
 	}
 	/**
 	 * Methode pour brasser les des. Genere un nombre au hasard entre 1 et le nombre de face
@@ -51,10 +56,16 @@ public class De implements Comparable<De>{
 	/**
 	 * Methode pour comparer le resultat de deux des
 	 */
-	public int compareTo(De DeAComparer) {
-		int toReturn = this.GetFaceDessus() - DeAComparer.GetFaceDessus();
-		if(DeAComparer.GetFaceDessus() > this.GetFaceDessus()){
-			toReturn = DeAComparer.GetFaceDessus() - this.GetFaceDessus();
+	public int compareTo(De DeAComparer) throws IllegalArgumentException{
+		int toReturn = 0;
+		if(DeAComparer != null){
+			toReturn = this.GetFaceDessus() - DeAComparer.GetFaceDessus();
+			if(DeAComparer.GetFaceDessus() > this.GetFaceDessus()){
+				toReturn = DeAComparer.GetFaceDessus() - this.GetFaceDessus();
+			}
+		}
+		else{
+			throw new IllegalArgumentException();
 		}
 		return toReturn;
 	}

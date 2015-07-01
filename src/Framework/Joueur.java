@@ -17,6 +17,9 @@ Date créé: 2015-06-18
 
 package Framework;
 
+
+import org.w3c.dom.ranges.RangeException;
+
 public class Joueur implements Comparable<Joueur>{
 	private int numeroDuJoueur;
 	private int nombreDePoints;
@@ -47,10 +50,16 @@ public class Joueur implements Comparable<Joueur>{
 	 * @param joueurAComparer Le joueur a comparer
 	 * @return La difference de point entre les deux
 	 */
-	public int compareTo(Joueur joueurAComparer) {
-		int toReturn = this.getNombreDePoints() - joueurAComparer.getNombreDePoints();
-		if(joueurAComparer.getNombreDePoints() > this.getNombreDePoints()){
-			toReturn = joueurAComparer.getNombreDePoints() - this.getNombreDePoints();
+	public int compareTo(Joueur joueurAComparer) throws IllegalArgumentException{
+		int toReturn = 0;
+		if(joueurAComparer != null){
+			toReturn = this.getNombreDePoints() - joueurAComparer.getNombreDePoints();
+			if(joueurAComparer.getNombreDePoints() > this.getNombreDePoints()){
+				toReturn = joueurAComparer.getNombreDePoints() - this.getNombreDePoints();
+			}	
+		}
+		else{
+			throw new IllegalArgumentException();
 		}
 		return toReturn;
 	}
@@ -59,10 +68,15 @@ public class Joueur implements Comparable<Joueur>{
 	 * @param joueurAComparer Le joueur a comparer
 	 * @return True si le joueur actuel a plus de point que celui entre en parametre
 	 */
-	public boolean aPlusDePointQue(Joueur joueurAComparer){
+	public boolean aPlusDePointQue(Joueur joueurAComparer) throws IllegalArgumentException{
 		boolean aPlusDePoint = false;
-		if(this.getNombreDePoints() > joueurAComparer.getNombreDePoints()){
-			aPlusDePoint = true;
+		if(joueurAComparer != null){
+			if(this.getNombreDePoints() > joueurAComparer.getNombreDePoints()){
+				aPlusDePoint = true;
+			}
+		}
+		else{
+			throw new IllegalArgumentException();
 		}
 		return aPlusDePoint;
 	}
