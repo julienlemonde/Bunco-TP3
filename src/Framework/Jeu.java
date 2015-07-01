@@ -20,6 +20,7 @@ package Framework;
 public class Jeu {
 	private int nbTours;
 	private int tourActuel;
+	private Joueur joueurActuel;
 	private Joueur gagnant;
 	protected IStrategie strategieDuJeuEnCours;
 	protected CollectionDes tousLesDes = new CollectionDes();
@@ -39,19 +40,8 @@ public class Jeu {
 	 * Methode qui calcule le pointage d'un tour du jeu
 	 * ce pointage est calculer dans la strategie du jeu de type IStrategie
 	 */
-	public void calculerScoreTour(){
-		IterateurJoueur joueurActuel = this.tousLesJoueurs.creerIterateur();
-		int joueurIndex = 1;
-		while(joueurIndex <= this.tousLesJoueurs.getNombreDeJoueurDansLaCollection()){
-			boolean rejouerTour = true;
-			while(rejouerTour == true){
-				rejouerTour = strategieDuJeuEnCours.calculerScoreTour(this, joueurActuel.GetJoueurActuelle());
-			}
-			joueurActuel.next();
-			joueurIndex ++;
-		}
-		
-		//strategieDuJeuEnCours.calculerScoreTour(this, joueurActuel);
+	public boolean calculerScoreTour(){
+		return strategieDuJeuEnCours.calculerScoreTour(this, this.joueurActuel);
 	}
 	/**
 	 * Methode pour calculer le vainqueur du jeu
@@ -124,7 +114,7 @@ public class Jeu {
 	 */
 	public CollectionJoueurs DemarrerLeJeu(){
 		for (int i = 1; i <= this.getNombreDeTours(); i++) {
-			jouerLeTour(i);
+			jouerLeTourComplet(i);
 		}
 		return this.getTousLesJoueurs().getLeaderBoard();
 	}
@@ -132,8 +122,18 @@ public class Jeu {
 	 * Methode pour joueur un tour a la fois pour tous les joueurs a la fois
 	 * @param numeroDuTour Numero du tour qui doit etre jouer
 	 */
-	public void jouerLeTour(int numeroDuTour){
+	public void jouerLeTourComplet(int numeroDuTour){
 		this.setTourActuel(numeroDuTour);
-		this.calculerScoreTour();
+		IterateurJoueur joueurActuel = this.tousLesJoueurs.creerIterateur();
+		int joueurIndex = 1;
+		while(joueurIndex <= this.tousLesJoueurs.getNombreDeJoueurDansLaCollection()){
+			this.joueurActuel = joueurActuel.GetJoueurActuelle();
+			boolean rejouerTour = true;
+			while(rejouerTour == true){
+				rejouerTour = this.calculerScoreTour();
+			}
+			joueurActuel.next();
+			joueurIndex ++;
+		}
 	}
 }
