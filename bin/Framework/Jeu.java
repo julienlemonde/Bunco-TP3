@@ -1,0 +1,129 @@
+/******************************************************
+Cours:  LOG121
+Session: E2015
+Projet: TP3-Bunco
+Étudiant(e)s: Alexandre Malo, 
+			  Marc-Antoine Hebert, 
+			  Jean-Michel Coupal,
+			  Julien Lemonde
+
+Professeur : Francis Cardinal
+Nom du fichier: Jeu.java
+Date créé: 2015-06-18
+*******************************************************
+@author Alexandre Malo, Marc-Antoine Hebert, Jean-Michel Coupal, Julien Lemonde
+@date 2015-06-18
+*******************************************************/
+
+package Framework;
+
+public class Jeu {
+	private int nbTours;
+	private int tourActuel;
+	private Joueur gagnant;
+	protected IStrategie strategieDuJeuEnCours;
+	protected CollectionDes tousLesDes = new CollectionDes();
+	protected CollectionJoueurs tousLesJoueurs = new CollectionJoueurs();
+	
+	/**
+	 * Constructeur d'un jeu quelconque
+	 * @param nbJoueurs Indique le nombre de joueur a jouer au jeu
+	 */
+	public Jeu(int nbJoueurs){
+		for (int i = 1; i <= nbJoueurs; i++) {
+			Joueur joueurAAjouter = new Joueur(i);
+			this.tousLesJoueurs.ajouterJoueur(joueurAAjouter);
+		}
+	}
+	/**
+	 * Methode qui calcule le pointage d'un tour du jeu
+	 * ce pointage est calculer dans la strategie du jeu de type IStrategie
+	 */
+	public void calculerScoreTour(){
+		strategieDuJeuEnCours.calculerScoreTour(this);
+	}
+	/**
+	 * Methode pour calculer le vainqueur du jeu
+	 * @return Le gagant du jeu en cours
+	 */
+	public Joueur calculerLeVainqueur(){
+		return strategieDuJeuEnCours.calculerLeVainqueur(this);
+	}
+	/**
+	 * Mutateur pour changer le nombre total de tour du jeu
+	 * @param nbTours Le nombre de tour desire
+	 */
+	public void setNombreDeTours(int nbTours){
+		this.nbTours = nbTours;
+	}
+	/**
+	 * Accesseur du nombre de tour total
+	 * @return Le de tour du jeu
+	 */
+	public int getNombreDeTours(){
+		return this.nbTours;
+	}
+	/**
+	 * Mutateur pour declarer un gagnant
+	 * @param leGagnant Le joueur qui doit etre gagnant
+	 */
+	protected void setGagnant(Joueur leGagnant){
+		this.gagnant = leGagnant;
+	}
+	/**
+	 * Accesseur qui retourne le gagnant du jeu
+	 * @return Le joueur gagnant
+	 */
+	protected Joueur getGagnant(){
+		return this.gagnant;
+	}
+	/**
+	 * Accesseur de la collection de joueur du jeu
+	 * @return Une collection de tous les joueurs
+	 */
+	public CollectionJoueurs getTousLesJoueurs(){
+		return (this.tousLesJoueurs);
+	}
+	/**
+	 * Accesseur de la collection de des
+	 * @return Tous les des du jeu
+	 */
+	public CollectionDes getTousLesDes(){
+		return (this.tousLesDes);
+	}
+	/**
+	 * Accesseur du tour actuel
+	 * @return Le numero du tour actuek
+	 */
+	public int getTourActuel(){
+		return this.tourActuel;
+	}
+	/**
+	 * Mutateur pour choisir le numero, il doit etre plus petit que le nombre total 
+	 * @param tourActuel Le numero du tour desire
+	 */
+	public void setTourActuel(int tourActuel){
+		if(tourActuel <= this.getNombreDeTours())
+		this.tourActuel = tourActuel;
+	}
+	/**
+	 * Methode pour demarrer le jeu quelconque pour chaque joueur et selon le nombre de tour
+	 * choisi
+	 * @return Le gagnant du jeu
+	 */
+	public Joueur DemarrerLeJeu(){
+		for (int i = 1; i <= this.getNombreDeTours(); i++) {
+			jouerLeTour(i);
+		}
+		this.setGagnant(this.calculerLeVainqueur());
+		return this.getGagnant();
+	}
+	/**
+	 * Methode pour joueur un tour a la fois pour tous les joueurs a la fois
+	 * @param numeroDuTour Numero du tour qui doit etre jouer
+	 */
+	public void jouerLeTour(int numeroDuTour){
+		this.setTourActuel(numeroDuTour);
+		this.calculerScoreTour();
+	}
+}
