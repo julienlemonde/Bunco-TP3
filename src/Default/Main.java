@@ -84,7 +84,7 @@ public class Main {
 		}
 		//Tester si le joueur gagnant est retournee
 		System.out.println("Gagnant:");
-		System.out.println(collectionjoueur.getJoueurAvecPlusGrandScore().getNumJoueur());
+		System.out.println(collectionjoueur.getJoueurAvecPlusGrandScore(false).getNumJoueur());
 		
 		System.out.println(" :");
 		System.out.println(" :");
@@ -93,8 +93,14 @@ public class Main {
 		
 		//Jeu du bunco. On cree le jeu et on joue
 		JeuBunco jeubuncotest = new JeuBunco(3);
-		Joueur gagnant = jeubuncotest.DemarrerLeJeu();
-		System.out.println("BiG WINNER !: " + gagnant.getNumJoueur());
+		CollectionJoueurs gagnants = jeubuncotest.DemarrerLeJeu();
+		System.out.println("BiG WINNER !: " + gagnants.getJoueurAvecPlusGrandScore(false).getNumJoueur());
+		
+		IterateurJoueur leaderBoard = gagnants.creerIterateur();
+		for (int i = 0; i < gagnants.getNombreDeJoueurDansLaCollection(); i++) {
+			System.out.println((i+1) +"e place: Joueur #"+leaderBoard.GetJoueurActuelle().getNumJoueur());
+			leaderBoard.next();
+		}
 		
 		
 		

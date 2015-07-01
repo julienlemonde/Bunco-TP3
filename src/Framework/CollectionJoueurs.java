@@ -39,14 +39,30 @@ public class CollectionJoueurs implements ListeAIterer{
 	 * Methode pour retourner le joueur ayant le plus grand pointage dans la liste
 	 * @return Le joueur ayant le plus de point dans la collection
 	 */
-	public Joueur getJoueurAvecPlusGrandScore(){
+	public Joueur getJoueurAvecPlusGrandScore(boolean enleverCeJoueurDeLaCollection){
 		Joueur joueurGagnant = this.collectionDeJoueurs.get(0);
-		for (Joueur joueur : this.collectionDeJoueurs) {
-			if(joueur.aPlusDePointQue(joueurGagnant)){
-				joueurGagnant = joueur;
+		int indexDuGagnant = 0;
+		for (int i = 0; i < this.collectionDeJoueurs.size(); i++) {
+			if(this.collectionDeJoueurs.get(i).aPlusDePointQue(joueurGagnant)){
+				joueurGagnant = this.collectionDeJoueurs.get(i);
+				indexDuGagnant = i;
 			}
 		}
+		if(enleverCeJoueurDeLaCollection){
+			this.collectionDeJoueurs.remove(indexDuGagnant);
+		}
 		return joueurGagnant;
+	}
+	public CollectionJoueurs getLeaderBoard(){
+		CollectionJoueurs collectionEnOrdreDeScore = new CollectionJoueurs();
+		CollectionJoueurs collectionTemp = new CollectionJoueurs();
+		for (int i = 0; i < this.getNombreDeJoueurDansLaCollection(); i++) {
+			collectionTemp.ajouterJoueur(this.collectionDeJoueurs.get(i));
+		}
+		while(collectionTemp.getNombreDeJoueurDansLaCollection() != 0){
+			collectionEnOrdreDeScore.ajouterJoueur(collectionTemp.getJoueurAvecPlusGrandScore(true));
+		}
+		return collectionEnOrdreDeScore;
 	}
 	
 	/**

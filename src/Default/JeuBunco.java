@@ -29,5 +29,6 @@ public class JeuBunco extends Jeu{
 		super.strategieDuJeuEnCours = new StrategieBunco();
 		super.tousLesDes.ajouterPlusieursDesIdentiques(3, 6);
 		super.setNombreDeTours(6);
+		
 	}
 }

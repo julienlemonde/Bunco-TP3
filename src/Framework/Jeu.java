@@ -46,7 +46,7 @@ public class Jeu {
 	 * Methode pour calculer le vainqueur du jeu
 	 * @return Le gagant du jeu en cours
 	 */
-	public Joueur calculerLeVainqueur(){
+	public CollectionJoueurs calculerLeVainqueur(){
 		return strategieDuJeuEnCours.calculerLeVainqueur(this);
 	}
 	/**
@@ -111,12 +111,11 @@ public class Jeu {
 	 * choisi
 	 * @return Le gagnant du jeu
 	 */
-	public Joueur DemarrerLeJeu(){
+	public CollectionJoueurs DemarrerLeJeu(){
 		for (int i = 1; i <= this.getNombreDeTours(); i++) {
 			jouerLeTour(i);
 		}
-		this.setGagnant(this.calculerLeVainqueur());
-		return this.getGagnant();
+		return this.getTousLesJoueurs().getLeaderBoard();
 	}
 	/**
 	 * Methode pour joueur un tour a la fois pour tous les joueurs a la fois

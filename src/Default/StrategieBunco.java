@@ -15,11 +15,11 @@ Date créé: 2015-06-18
 @date 2015-06-18
 *******************************************************/ 
 package Default;
+import Framework.CollectionJoueurs;
 import Framework.IStrategie;
 import Framework.IterateurDe;
 import Framework.IterateurJoueur;
 import Framework.Jeu;
-import Framework.Joueur;
 
 public class StrategieBunco implements IStrategie{
 	
@@ -30,10 +30,8 @@ public class StrategieBunco implements IStrategie{
 	 * Classe pour calcule le Vainqueur du jeu bunco
 	 * @return Retour un joueur gagnant
 	 */
-	public Joueur calculerLeVainqueur(Jeu jeu) {
-		
-		Joueur gagnant = jeu.getTousLesJoueurs().getJoueurAvecPlusGrandScore();
-		return gagnant;
+	public CollectionJoueurs calculerLeVainqueur(Jeu jeu) {
+		return jeu.getTousLesJoueurs().getLeaderBoard();
 	}
 
 	/**

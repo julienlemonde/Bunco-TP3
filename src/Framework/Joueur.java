@@ -18,8 +18,6 @@ Date créé: 2015-06-18
 package Framework;
 
 
-import org.w3c.dom.ranges.RangeException;
-
 public class Joueur implements Comparable<Joueur>{
 	private int numeroDuJoueur;
 	private int nombreDePoints;
