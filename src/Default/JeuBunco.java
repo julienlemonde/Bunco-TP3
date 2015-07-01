@@ -16,6 +16,7 @@ Date créé: 2015-06-18
 *******************************************************/ 
 package Default;
 
+import Framework.IterateurJoueur;
 import Framework.Jeu;
 
 public class JeuBunco extends Jeu{
@@ -29,6 +30,7 @@ public class JeuBunco extends Jeu{
 		super.strategieDuJeuEnCours = new StrategieBunco();
 		super.tousLesDes.ajouterPlusieursDesIdentiques(3, 6);
 		super.setNombreDeTours(6);
-		
 	}
+	
+	
 }

@@ -40,7 +40,18 @@ public class Jeu {
 	 * ce pointage est calculer dans la strategie du jeu de type IStrategie
 	 */
 	public void calculerScoreTour(){
-		strategieDuJeuEnCours.calculerScoreTour(this);
+		IterateurJoueur joueurActuel = this.tousLesJoueurs.creerIterateur();
+		int joueurIndex = 1;
+		while(joueurIndex <= this.tousLesJoueurs.getNombreDeJoueurDansLaCollection()){
+			boolean rejouerTour = true;
+			while(rejouerTour == true){
+				rejouerTour = strategieDuJeuEnCours.calculerScoreTour(this, joueurActuel.GetJoueurActuelle());
+			}
+			joueurActuel.next();
+			joueurIndex ++;
+		}
+		
+		//strategieDuJeuEnCours.calculerScoreTour(this, joueurActuel);
 	}
 	/**
 	 * Methode pour calculer le vainqueur du jeu

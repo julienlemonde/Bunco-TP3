@@ -18,5 +18,5 @@ package Framework;
 
 public interface IStrategie {
 	public CollectionJoueurs calculerLeVainqueur(Jeu jeu);
-	public void calculerScoreTour(Jeu jeu);
+	public boolean calculerScoreTour(Jeu jeu, Joueur joueurActuel);
 }
