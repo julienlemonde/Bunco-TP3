@@ -5,8 +5,10 @@ import org.junit.*;
 
 import Bunco.JeuBunco;
 import Bunco.StrategieBunco;
+import Framework.CollectionJoueurs;
 import Framework.De;
 import Framework.IterateurDe;
+import Framework.IterateurJoueur;
 import Framework.Joueur;
 
 public class TestStrategie {
@@ -73,9 +75,26 @@ public class TestStrategie {
 				else{
 					assertTrue(joueurTemp.getNombreDePoints()== 0 && !(rejouerLeTour));
 				}
-				
 			}
 		}
+	}
+	@Test
+	public void vainqueurTest(){
+		for (int i = 0; i < 2; i++) {
+			Joueur joueurTemp = new Joueur(i);
+			joueurTemp.setPointageDuJoueur(100-i);
+			this.jeuTest.getTousLesJoueurs().ajouterJoueur(joueurTemp);
+		}
+		CollectionJoueurs leaderBoard = this.strategieTest.calculerLeVainqueur(jeuTest);
+		IterateurJoueur leaderBoardIterateur = leaderBoard.creerIterateur();
+		for (int i = 0; i < leaderBoard.getNombreDeJoueurDansLaCollection(); i++) {
+			Joueur joueurAcomparer = leaderBoardIterateur.GetJoueurActuelle();
+			if(leaderBoardIterateur.hasNext()){
+				leaderBoardIterateur.next();
+				assertTrue(joueurAcomparer.aPlusDePointQue(leaderBoardIterateur.GetJoueurActuelle()) || joueurAcomparer.compareTo(leaderBoardIterateur.GetJoueurActuelle())==0);
+			}
+		}
+		
 	}
 	
 }

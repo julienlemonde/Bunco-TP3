@@ -13,4 +13,7 @@ public class TestJeu {
 	public void creationDuJeu(){
 		jeuTest = new JeuBunco(5);
 	}
+	@Test
+	public void test2(){
+	}
 }
