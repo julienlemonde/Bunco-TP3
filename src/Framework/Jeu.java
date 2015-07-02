@@ -17,7 +17,7 @@ Date créé: 2015-06-18
 
 package Framework;
 
-public class Jeu {
+public abstract class Jeu {
 	private int nbTours;
 	private int tourActuel;
 	private Joueur joueurActuel;
@@ -41,6 +41,7 @@ public class Jeu {
 	 * ce pointage est calculer dans la strategie du jeu de type IStrategie
 	 */
 	public boolean calculerScoreTour(){
+		this.getTousLesDes().BrasserTousLesDees();
 		return strategieDuJeuEnCours.calculerScoreTour(this, this.joueurActuel);
 	}
 	/**
