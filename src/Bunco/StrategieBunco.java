@@ -18,7 +18,6 @@ package Bunco;
 import Framework.CollectionJoueurs;
 import Framework.IStrategie;
 import Framework.IterateurDe;
-import Framework.IterateurJoueur;
 import Framework.Jeu;
 import Framework.Joueur;
 
