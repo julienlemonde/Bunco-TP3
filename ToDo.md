@@ -5,7 +5,7 @@
 - [X] Patron GoF "Methode template"
 - [X] Patron GoF "Strategie"
 - [X] Patron GoF "Iterateur"
-- [ ] Patron de tests unitaires
+- [X] Patron de tests unitaires
 - [X] Commentaires
 - [ ] Dernière validation avant la remise
 
