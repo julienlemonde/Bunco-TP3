@@ -33,7 +33,12 @@ public class CollectionDes implements ListeAIterer{
 	 * @param de On lui indique quel de il faut ajouter
 	 */
 	public void ajouterDe(De de){
-		this.collectionDeDes.add(de);
+		if(de != null){
+			this.collectionDeDes.add(de);
+		}
+		else{
+			throw new IllegalArgumentException();
+		}
 	}
 	/**
 	 * Methode pour ajouter plusieurs des identiques a la fois

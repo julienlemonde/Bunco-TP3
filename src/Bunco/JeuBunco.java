@@ -15,8 +15,6 @@ Date créé: 2015-06-18
 @date 2015-06-18
 *******************************************************/ 
 package Bunco;
-
-import Framework.IterateurJoueur;
 import Framework.Jeu;
 
 public class JeuBunco extends Jeu{

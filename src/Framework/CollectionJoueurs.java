@@ -33,7 +33,12 @@ public class CollectionJoueurs implements ListeAIterer{
 	 * @param joueur
 	 */
 	public void ajouterJoueur(Joueur joueur){
-		this.collectionDeJoueurs.add(joueur);
+		if(joueur != null){
+			this.collectionDeJoueurs.add(joueur);
+		}
+		else{
+			throw new IllegalArgumentException();
+		}
 	}
 	/**
 	 * Methode pour retourner le joueur ayant le plus grand pointage dans la liste

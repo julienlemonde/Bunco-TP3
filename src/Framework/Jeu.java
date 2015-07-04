@@ -21,7 +21,6 @@ public abstract class Jeu {
 	private int nbTours;
 	private int tourActuel;
 	private Joueur joueurActuel;
-	private Joueur gagnant;
 	protected IStrategie strategieDuJeuEnCours;
 	protected CollectionDes tousLesDes = new CollectionDes();
 	protected CollectionJoueurs tousLesJoueurs = new CollectionJoueurs();
@@ -31,9 +30,13 @@ public abstract class Jeu {
 	 * @param nbJoueurs Indique le nombre de joueur a jouer au jeu
 	 */
 	public Jeu(int nbJoueurs){
+		if(nbJoueurs < 0){
+			nbJoueurs = 0;
+		}
 		for (int i = 1; i <= nbJoueurs; i++) {
 			Joueur joueurAAjouter = new Joueur(i);
 			this.tousLesJoueurs.ajouterJoueur(joueurAAjouter);
+			this.setTourActuel(1);
 		}
 	}
 	/**
@@ -64,20 +67,6 @@ public abstract class Jeu {
 	 */
 	public int getNombreDeTours(){
 		return this.nbTours;
-	}
-	/**
-	 * Mutateur pour declarer un gagnant
-	 * @param leGagnant Le joueur qui doit etre gagnant
-	 */
-	protected void setGagnant(Joueur leGagnant){
-		this.gagnant = leGagnant;
-	}
-	/**
-	 * Accesseur qui retourne le gagnant du jeu
-	 * @return Le joueur gagnant
-	 */
-	protected Joueur getGagnant(){
-		return this.gagnant;
 	}
 	/**
 	 * Accesseur de la collection de joueur du jeu
@@ -114,8 +103,9 @@ public abstract class Jeu {
 	 * @return Le gagnant du jeu
 	 */
 	public CollectionJoueurs DemarrerLeJeu(){
-		for (int i = 1; i <= this.getNombreDeTours(); i++) {
-			jouerLeTourComplet(i);
+		while(this.getTourActuel() <= this.getNombreDeTours()){
+			this.jouerLeTourComplet(this.getTourActuel());
+			this.tourActuel ++;
 		}
 		return this.getTousLesJoueurs().getLeaderBoard();
 	}
