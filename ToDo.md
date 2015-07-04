@@ -14,13 +14,13 @@
 
 ## Rapport
 
-- [ ] Introduction
-- [ ] Responsabilités des classes
-- [ ] Diagramme de classes
-- [ ] Description de conception
-- [ ] Faiblesses de conception
+- [X] Introduction
+- [X] Responsabilités des classes
+- [X] Diagramme de classes
+- [X] Description de conception
+- [X] Faiblesses de conception
 - [ ] Diagramme de sequence
-- [ ] Decision d'implémentation
+- [X] Decision d'implémentation
 - [ ] Conclusion
 - [ ] Dernière validation avant la remise
 
