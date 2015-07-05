@@ -28,6 +28,7 @@ public class Main {
 		CollectionJoueurs gagnants = jeubuncotest.DemarrerLeJeu();
 		System.out.println("BiG WINNER !: " + gagnants.getJoueurAvecPlusGrandScore(false).getNumJoueur());
 		
+		//Cree un tableau d'iterateur pour le classement des joueurs
 		IterateurJoueur leaderBoard = gagnants.creerIterateur();
 		for (int i = 0; i < gagnants.getNombreDeJoueurDansLaCollection(); i++) {
 			System.out.println((i+1) +"e place: Joueur #"+leaderBoard.GetJoueurActuelle().getNumJoueur());

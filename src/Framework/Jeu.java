@@ -95,7 +95,7 @@ public abstract class Jeu {
 	 */
 	public void setTourActuel(int tourActuel){
 		if(tourActuel <= this.getNombreDeTours())
-		this.tourActuel = tourActuel;
+			this.tourActuel = tourActuel;
 	}
 	/**
 	 * Methode pour demarrer le jeu quelconque pour chaque joueur et selon le nombre de tour

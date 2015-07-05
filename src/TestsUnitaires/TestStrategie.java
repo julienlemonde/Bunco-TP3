@@ -15,11 +15,20 @@ public class TestStrategie {
 	private JeuBunco jeuTest;
 	private IterateurDe deTest;
 	
+	/**
+	 * Creation d'une strategieBunco et d'un jeu Bunco a deux joueurs
+	 * Obligatoire pour pouvoir tester la strategie
+	 */
 	@Before
 	public void necessairePourTester(){
 		strategieTest = new StrategieBunco();
 		jeuTest = new JeuBunco(2);
 	}
+	/**
+	 * Test pour verifier que le jeu fonctionne de la bonne facon selon les regles du 
+	 * Bunco. Si ce test ne fonctionne pas, le jeu ne fonctionne donc pas de la facon
+	 * qu'il faudrait
+	 */
 	@Test
 	public void scoreEtRejouerLancerTest(){
 		for (int i = 1; i <= 6; i++) {
@@ -77,6 +86,9 @@ public class TestStrategie {
 			}
 		}
 	}
+	/**
+	 * Test pour verifier que le vainqueur est bel et bien celui qui a le plus de point
+	 */
 	@Test
 	public void vainqueurTest(){
 		for (int i = 0; i < 2; i++) {
