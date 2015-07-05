@@ -14,15 +14,21 @@ Date créé: 2015-06-18
 @author Alexandre Malo, Marc-Antoine Hebert, Jean-Michel Coupal, Julien Lemonde
 @date 2015-06-18
 *******************************************************/ 
-package Default;
-
+package Bunco;
 import Framework.Jeu;
 
 public class JeuBunco extends Jeu{
+	/**
+	 * Constructeur du jeu Bunco. Le constructeur utilise le constructeur super qui est
+	 * de la classe jeu 
+	 * @param nbDeJoueurs On indique le nombre de joueur
+	 */
 	public JeuBunco(int nbDeJoueurs){
 		super(nbDeJoueurs);
 		super.strategieDuJeuEnCours = new StrategieBunco();
 		super.tousLesDes.ajouterPlusieursDesIdentiques(3, 6);
 		super.setNombreDeTours(6);
 	}
+	
+	
 }

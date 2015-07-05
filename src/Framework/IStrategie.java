@@ -17,6 +17,6 @@ Date créé: 2015-06-18
 package Framework;
 
 public interface IStrategie {
-	public Joueur calculerLeVainqueur(Jeu jeu);
-	public void calculerScoreTour(Jeu jeu);
+	public CollectionJoueurs calculerLeVainqueur(Jeu jeu);
+	public boolean calculerScoreTour(Jeu jeu, Joueur joueurActuel);
 }
